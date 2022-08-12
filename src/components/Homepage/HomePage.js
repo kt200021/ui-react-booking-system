@@ -3,6 +3,7 @@ import Nav from "./Nav/Nav.js";
 import SelectDate from "./SelectDesk/SelectDate.js";
 import SelectDesk from "./SelectDesk/SelectDesk.js";
 import SelectLocation from "./SelectDesk/SelectLocation.js";
+import "../styles.css";
 const Home = () => {
   const [index, setIndex] = useState(1);
   const [month, setMonth] = useState();
@@ -24,7 +25,6 @@ const Home = () => {
     });
   };
 
-  //console.log(index);
   return (
     <>
       <Nav />

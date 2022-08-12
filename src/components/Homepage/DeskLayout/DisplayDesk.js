@@ -5,7 +5,7 @@ const DisplayDesk = (props) => {
   const { deskLayout, currentSelected } = props;
   ///console.log(deskLayout);
   const { A: rowA, B: rowB, C: rowC } = deskLayout;
-  // console.log(deskLayout);
+  //console.log(deskLayout);
   const seatClick = (e) => {
     if (e.target.classList.contains("seat")) {
       //console.log(e.target.innerText);

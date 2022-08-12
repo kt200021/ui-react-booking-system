@@ -6,7 +6,9 @@ function App() {
   useEffect(() => {
     // console.log("useeffect called");
     const bookings = {};
-    localStorage.setItem("bookings", JSON.stringify(bookings));
+    if (localStorage.getItem("bookings") === null)
+      localStorage.setItem("bookings", JSON.stringify(bookings));
+
     if (localStorage.getItem("blrData") === null)
       localStorage.setItem("blrData", JSON.stringify(bangaloreData));
   }, []);
