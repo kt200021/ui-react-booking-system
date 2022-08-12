@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import DisplayDesk from "../DeskLayout/DisplayDesk";
+import AddBooking from "../DeskApi's/AddBooking";
 const SelectDesk = (props) => {
-  const submitDesk = () => {
-    //console.log("submitted");
+  const { month, day } = props;
+  const [seat, setSeat] = useState("");
+  const changeSeat = (newSeat) => {
+    setSeat(() => {
+      return newSeat;
+    });
+  };
+  const submitDesk = (e) => {
+    const deskString = seat;
+    const deskRow = deskString[0];
+    const lengthString = deskString.length;
+    const deskNumber = parseInt(deskString.slice(2, lengthString));
+    let newBooking = {
+      row: deskRow,
+      col: deskNumber,
+      location: "Bangalore",
+      month: month,
+      day: day,
+    };
+
+    // console.log(seat);
+    AddBooking(newBooking);
     props.changeIndex(1);
   };
   const backDesk = () => {
@@ -10,13 +31,17 @@ const SelectDesk = (props) => {
   };
 
   const blrData = JSON.parse(localStorage.getItem("blrData"));
-
-  const deskLayout = blrData[5][5];
+  //console.log(month, day);
+  const deskLayout = blrData[month][day];
   // console.log(deskLayout);
   return (
     <section className="select-desk">
       <h1 className="select-desk-header">Choose a desk</h1>
-      <DisplayDesk deskLayout={deskLayout} currentSelect={3} />
+      <DisplayDesk
+        deskLayout={deskLayout}
+        changeSeat={changeSeat}
+        currentSelected={3}
+      />
       <div className="submit-buttons">
         <div>
           <label className="desk-error hidden">Invalid desk</label>
@@ -27,7 +52,7 @@ const SelectDesk = (props) => {
         <input
           type="submit"
           className="submit-desk form-buttons"
-          onSubmit={submitDesk}
+          onClick={submitDesk}
         />
       </div>
     </section>

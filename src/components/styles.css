@@ -103,15 +103,11 @@ padding:20px 38px 20px 38px;
     background-color: white;
     text-align: center;
     
- 
+    line-height: 6.5rem;
     border-radius: 0.3rem;
     font-size: 2.2rem;
 }
-.seat-text{
-position: relative;
-top:20px;
 
-}
 
 
 
@@ -206,4 +202,16 @@ top:20px;
 }
 .error{
     height: 22px;
+}
+[data-color="0"]{
+    background-color: red;
+}
+[data-color="1"]{
+    background-color: grey;
+}
+[data-color="2"]{
+    background-color: white;
+}
+[data-color="3"]{
+    background-color: green;
 }

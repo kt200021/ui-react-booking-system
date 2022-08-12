@@ -6,8 +6,14 @@ const DisplayDesk = (props) => {
   ///console.log(deskLayout);
   const { A: rowA, B: rowB, C: rowC } = deskLayout;
   // console.log(deskLayout);
+  const seatClick = (e) => {
+    if (e.target.classList.contains("seat")) {
+      //console.log(e.target.innerText);
+      props.changeSeat(e.target.innerText);
+    }
+  };
   return (
-    <div className="desk-layout">
+    <div className="desk-layout" onClick={seatClick}>
       <section className="row-A seats-row">
         {rowA.map((element, index) => {
           return (

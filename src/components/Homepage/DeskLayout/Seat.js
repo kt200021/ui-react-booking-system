@@ -7,7 +7,7 @@ const Seat = (props) => {
 
   return (
     <div className={seatClass} data-number={seatNumber} data-color={seatColor}>
-      <span className="seat-text">{seatId}</span>
+      {seatId}
     </div>
   );
 };
