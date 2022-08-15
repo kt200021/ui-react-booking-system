@@ -12,8 +12,7 @@ body{
 
 .top-nav{
     background-color: black;
-    position: relative;
-    right:40%;
+ 
     border-style: groove;
     border-radius: 0.8rem;
 }
@@ -148,17 +147,30 @@ margin-left: 20px;
 .seat:hover{
     background-color: rgb(112, 239, 110);
 }
-.select-desk{
-    border-radius: 2rem;
+
+.desk-overlay{
     position: fixed;
-    width: 84%;
-    margin:auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    box-shadow: 0 20px 57px 0 rgba(51, 51, 51, 0.1);
-    background-color:rgb(255, 255, 255) ;
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(16, 1, 1, 0.5);
+
+}
+
+.desk-layout-overlay{
+
+    
+    background-color: rgb(244, 244, 244);
+    width:90%;
+    border-radius: 2ch;
+    margin:5px auto 30px auto;
+    z-index: 100;
     top:100px;
-    left:100px;
+    
+
 }
 
 .select-desk-header{

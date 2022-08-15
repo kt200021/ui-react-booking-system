@@ -1,20 +1,102 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import "../bookingsStyles.css";
 import CalendarBody from "./CalendarBody";
+import SeatOverlay from "./SeatOverlay";
+import SelectDesk from "../Homepage/SelectDesk/SelectDesk";
+function handleMonth(state, action) {
+  if (action.type === "next") {
+    if (state.currentMonth < 11)
+      return {
+        currentMonth: state.currentMonth + 1,
+        nextDisabled: false,
+        prevDisabled: false,
+      };
+    else
+      return {
+        currentMonth: state.currentMonth + 1,
+        nextDisabled: true,
+        prevDisabled: false,
+      };
+  } else {
+    if (state.currentMonth > 2)
+      return {
+        currentMonth: state.currentMonth - 1,
+        prevDisabled: false,
+        nextDisabled: false,
+      };
+    else
+      return {
+        currentMonth: state.currentMonth - 1,
+        prevDisabled: true,
+        nextDisabled: false,
+      };
+  }
+}
 const DisplayCalendar = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
+  // const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
+  const cmonth = new Date().getMonth() + 1;
+  const [overlay, setOverlay] = useState(false);
+  const [seat, setSeat] = useState({ row: "", col: "" });
+  const [desk, setDesk] = useState(false);
+  const [currentDay, setCurrentDay] = useState();
+  const [overlayObj, setOverlayObj] = useState({});
+  const [currentMonth, dispatchMonth] = useReducer(handleMonth, {
+    currentMonth: cmonth,
+    nextDisabled: false,
+    prevDisabled: false,
+  });
+  const changeOverlayObj = (obj) => {
+    setOverlayObj(() => {
+      return obj;
+    });
+  };
+  const changeDesk = () => {
+    setDesk((desk) => {
+      return !desk;
+    });
+  };
+  const changeOverlay = () => {
+    setOverlay((overlay) => {
+      return !overlay;
+    });
+  };
+  const EditBooking = (e) => {
+    if (
+      e.target.classList.contains("calendar-seat") &&
+      e.target.innerText !== "--"
+    ) {
+      const parent = e.target.parentElement;
+
+      const seatRow = parent.getAttribute("data-seat-row");
+      const seatCol = parent.getAttribute("data-seat-col");
+
+      setSeat(() => {
+        return { row: seatRow, col: seatCol };
+      });
+
+      setCurrentDay(() => {
+        return parent.getAttribute("data-id");
+      });
+      changeOverlay();
+    }
+  };
   return (
     <>
-      <h1 className="calendar-month"> July</h1>
+      <h1 className="calendar-month"> {currentMonth.currentMonth}</h1>
       <section className="calendar-section">
         <section className="prev-month">
-          <button style={{ fontSize: "24px" }}>
+          <button
+            className="prevButton"
+            disabled={currentMonth.prevDisabled}
+            style={{ fontSize: "24px" }}
+            onClick={() => dispatchMonth({ type: "prev" })}
+          >
             prev
             <i />
           </button>
         </section>
 
-        <section className="calendar-display">
+        <section className="calendar-display" onClick={EditBooking}>
           <table className="calendar">
             <thead className="header">
               <tr>
@@ -28,41 +110,39 @@ const DisplayCalendar = () => {
               </tr>
             </thead>
             <tbody className="calendar-body">
-              <CalendarBody currentMonth={currentMonth} />
+              <CalendarBody currentMonth={currentMonth.currentMonth} />
             </tbody>
           </table>
         </section>
         <section className="next-month">
-          <button style={{ fontSize: "24px" }}>
+          <button
+            className="next-button"
+            disabled={currentMonth.nextDisabled}
+            style={{ fontSize: "24px" }}
+            onClick={() => dispatchMonth({ type: "next" })}
+          >
             next
             <i />
           </button>
         </section>
-        <section className="seat-overlay hide">
-          <section className="overlay-message">
-            <h1 className="seat-no-overlay">Seat : </h1>
-            <button className="cancel-seat" data-row="" data-col="">
-              Cancel Seat
-            </button>
-            <button className="edit-seat" data-row="" data-col="">
-              Edit Seat
-            </button>
-          </section>
-        </section>
-        <section className="desk-overlay hide">
-          <section className="select-desk">
-            <h1 className="select-desk-header">Choose a desk</h1>
-            <div className="desk-layout">
-              <section className="row-A seats-row"></section>
-              <section className="row-B seats-row"></section>
-              <section className="row-C seats-row"></section>
-            </div>
-            <div className="submit-buttons">
-              <label className="desk-error hidden">Invalid desk</label>
-              <input type="submit" className="submit-desk form-buttons" />
-            </div>
-          </section>
-        </section>
+        {overlay && (
+          <SeatOverlay
+            currentDay={currentDay}
+            currentMonth={currentMonth.currentMonth}
+            seat={seat}
+            changeOverlay={changeOverlay}
+            changeDesk={changeDesk}
+            changeOverlayObj={changeOverlayObj}
+          />
+        )}
+        {desk && (
+          <SelectDesk
+            month={currentMonth.currentMonth}
+            day={currentDay}
+            overlay={true}
+            overlayObj={overlayObj}
+          />
+        )}
       </section>
     </>
   );

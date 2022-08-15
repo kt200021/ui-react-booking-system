@@ -2,7 +2,7 @@ import React from "react";
 import Seat from "./Seat";
 const DisplayDesk = (props) => {
   //console.log(props);
-  const { deskLayout, currentSelected } = props;
+  const { deskLayout, currentSelected, displayClass } = props;
   ///console.log(deskLayout);
   const { A: rowA, B: rowB, C: rowC } = deskLayout;
   //console.log(deskLayout);
@@ -13,7 +13,7 @@ const DisplayDesk = (props) => {
     }
   };
   return (
-    <div className="desk-layout" onClick={seatClick}>
+    <div className={displayClass} onClick={seatClick}>
       <section className="row-A seats-row">
         {rowA.map((element, index) => {
           return (

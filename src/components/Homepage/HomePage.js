@@ -37,7 +37,12 @@ const Home = () => {
         />
       )}
       {index === 3 && (
-        <SelectDesk month={month} day={day} changeIndex={changeIndex} />
+        <SelectDesk
+          month={month}
+          day={day}
+          changeIndex={changeIndex}
+          overlay={false}
+        />
       )}
     </>
   );
