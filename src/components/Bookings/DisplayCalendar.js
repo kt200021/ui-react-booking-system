@@ -1,8 +1,15 @@
-import React, { useReducer, useState } from "react";
+import React, {
+  useCallback,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 import "../bookingsStyles.css";
 import CalendarBody from "./CalendarBody";
 import SeatOverlay from "./SeatOverlay";
 import SelectDesk from "../Homepage/SelectDesk/SelectDesk";
+import Nav from "../Homepage/Nav/Nav";
 function handleMonth(state, action) {
   if (action.type === "next") {
     if (state.currentMonth < 11)
@@ -33,35 +40,44 @@ function handleMonth(state, action) {
   }
 }
 const DisplayCalendar = () => {
-  // const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
+  console.log("display calendar re rendered");
   const cmonth = new Date().getMonth() + 1;
   const [overlay, setOverlay] = useState(false);
   const [seat, setSeat] = useState({ row: "", col: "" });
   const [desk, setDesk] = useState(false);
   const [currentDay, setCurrentDay] = useState();
   const [overlayObj, setOverlayObj] = useState({});
+  const seatSelected = useRef();
+
   const [currentMonth, dispatchMonth] = useReducer(handleMonth, {
     currentMonth: cmonth,
     nextDisabled: false,
     prevDisabled: false,
   });
-  const changeOverlayObj = (obj) => {
+
+  const changeOverlayObj = useCallback((obj) => {
     setOverlayObj(() => {
       return obj;
     });
-  };
-  const changeDesk = () => {
+  }, []);
+  const changeDesk = useCallback(() => {
     setDesk((desk) => {
       return !desk;
     });
-  };
-  const changeOverlay = () => {
+  }, []);
+  const changeOverlay = useCallback(() => {
     setOverlay((overlay) => {
       return !overlay;
     });
-  };
+  }, []);
+
+  //ask about dom target
   const EditBooking = (e) => {
-    if (
+    if (e.target === seatSelected.current) {
+      //console.log("heksknkk ");
+      changeOverlay();
+      return;
+    } else if (
       e.target.classList.contains("calendar-seat") &&
       e.target.innerText !== "--"
     ) {
@@ -69,7 +85,7 @@ const DisplayCalendar = () => {
 
       const seatRow = parent.getAttribute("data-seat-row");
       const seatCol = parent.getAttribute("data-seat-col");
-
+      console.log("i am in");
       setSeat(() => {
         return { row: seatRow, col: seatCol };
       });
@@ -77,11 +93,13 @@ const DisplayCalendar = () => {
       setCurrentDay(() => {
         return parent.getAttribute("data-id");
       });
+      seatSelected.current = e.target;
       changeOverlay();
     }
   };
   return (
     <>
+      <Nav></Nav>
       <h1 className="calendar-month"> {currentMonth.currentMonth}</h1>
       <section className="calendar-section">
         <section className="prev-month">
@@ -141,10 +159,12 @@ const DisplayCalendar = () => {
             day={currentDay}
             overlay={true}
             overlayObj={overlayObj}
+            changeDesk={changeDesk}
+            deskClass={"select-desk"}
           />
         )}
       </section>
     </>
   );
 };
-export default DisplayCalendar;
+export default React.memo(DisplayCalendar);

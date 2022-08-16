@@ -1,76 +1,37 @@
-html{
-    font-size: 62.5%;
-}
 
-
-body{
-   margin-top: 0;
-   margin-left: 0;
-   margin-right: 0;
-}
-
-
-.top-nav{
-    background-color: black;
- 
-    border-style: groove;
-    border-radius: 0.8rem;
-}
-.top-nav a {
-    float: left;
-     color: white;
-    text-decoration: none;
-    font-size: 2.5rem;
-
-}
-.top-nav a:hover{
-    background-color: rgb(188, 202, 92);
-    
-}
-.home{
-    padding:16px 25px 16px 25px;
-}
-.bookings{
-   
-        padding:16px 20px 16px 20px;
-    
-}
-header{
-
-display: flex;
-background-color: rgb(240, 240, 240);
-justify-content:space-between;
-margin-bottom: 100px;
-}
-.logo{
-    position: relative;
-    left:30px;
-    padding-top: 4px;
-    
-    }
 
 
 .calendar-section{
     display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 2rem;
+  background-color:white;
+    margin: auto;
+    width: 80%;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
 }
 
 .calendar{
 
     margin:auto;
-    
+   
 }
 
 .calendar td,th{
    text-align: center;
-    background-color:rgb(238, 235, 235);
+
     align-items: center;
     width:80px;
     height: 70px;
     padding-top: 15px;
     font-size: 2rem;
 
+}
+.calendar-display{
+    background-color: #f6f6f6;
+    border-radius: 2rem;
+    border: solid;
 }
 .seat-overlay{
     position: fixed;
@@ -106,6 +67,15 @@ margin-bottom: 100px;
 .prev-month{
 
 margin-right: 20px;
+
+}
+.next-button,.prevButton{
+    background-color: teal;
+    color: white;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid teal;
+    cursor: pointer;
 }
 .next-month{
 margin-left: 20px;
@@ -191,7 +161,7 @@ padding:20px 38px 20px 38px;
 .row-C{
     padding-bottom:50px;
 }
-.seat{
+/* .seat{
     width:10%;
     height:50px;
     margin:0px 10px 0px 10px;
@@ -201,7 +171,7 @@ padding:20px 38px 20px 38px;
     padding-top:16px;
     border-radius: 0.3rem;
     font-size: 2.2rem;
-}
+} */
 .calendar-seat{
     background-color: white;
     border-radius: 8px;

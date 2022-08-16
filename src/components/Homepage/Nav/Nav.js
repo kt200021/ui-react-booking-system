@@ -1,25 +1,26 @@
 import React from "react";
 import "../../styles.css";
-import logo from "./logo2.png";
+import logo from "./ui-react.png";
+import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <>
       <header>
         <div className="logo">
-          <img src={logo} alt="sprinklr logo" width="200" height="54.5" />
+          <img src={logo} alt="sprinklr logo" width="200" height="59.5" />
         </div>
 
         <nav className="top-nav">
-          <a className="home" href="/index.html">
+          <Link to="/home" className="home">
             Home
-          </a>
-          <a className="bookings" href="./bookings.html">
+          </Link>
+          <Link to="/bookings" className="bookings">
             My Bookings
-          </a>
+          </Link>
         </nav>
       </header>
       <section className="form-header">
-        <h1 className="form-header-text">Desk Booking</h1>
+        <h1 className="form-header-text"> Book a new desk</h1>
       </section>
     </>
   );

@@ -7,16 +7,14 @@ body{
    margin-top: 0;
    margin-left: 0;
    margin-right: 0;
+   background-color: #e8fbfb;
 }
 
 
 .top-nav{
-    background-color: black;
- 
   
-    border-style: groove;
-   
-    border-radius: 0.8rem;
+ 
+    
 }
 .top-nav a {
     float: left;
@@ -26,28 +24,26 @@ body{
 
 }
 .top-nav a:hover{
-    background-color: rgb(188, 202, 92);
+    background-color: #33a1a1;
     
 }
-.home{
-    padding:16px 25px 16px 25px;
+.home,.bookings{
+    padding:18px 25px 18px 25px;
 }
-.bookings{
-   
-        padding:16px 20px 16px 20px;
-    
-}
+
 header{
 
 display: flex;
-background-color: rgb(240, 240, 240);
+position: sticky;
+background-color: #135f5f;
 justify-content:space-between;
-margin-bottom: 100px;
+margin-bottom: 50px;
+padding:0 10%;
+top:0;
 }
 
 .logo{
-position: relative;
-left:30px;
+
 padding-top: 4px;
 
 }
@@ -57,6 +53,7 @@ padding-top: 4px;
 
    
     background-color: rgb(244, 244, 244);
+    
     width:90%;
     border-radius: 2ch;
     margin:5px auto 30px auto;
@@ -70,6 +67,7 @@ padding-top: 4px;
 .select-desk{
     border-radius: 2rem;
     width: 84%;
+    max-width: 1000px;
     margin:auto;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -98,7 +96,7 @@ padding:20px 38px 20px 38px;
 }
 .seat{
     width:10%;
-    height:65px;
+    height:55px;
     margin:0px 10px 0px 10px;
     background-color: white;
     text-align: center;
@@ -118,6 +116,8 @@ padding:20px 38px 20px 38px;
 .form-header-text{
     font-size: 3rem;
    text-align: center;
+   margin-bottom: 100px;
+   color:#008080;
 }
 
 .location-label{
@@ -135,7 +135,20 @@ padding:20px 38px 20px 38px;
     text-align: center;
     padding-top: 30px;
     border-radius: 2rem;
-    box-shadow: 0 20px 57px 0 rgba(51, 51, 51, 0.1);
+    background-color: white;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+.submit-location{
+    text-decoration: none;
+    position: relative;
+    font-size: 2rem;
+    top:30px;
+    background-color: teal;
+    color: white;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid teal;
+    cursor: pointer;
 }
 #location:hover{
     background-color: rgb(205, 203, 203);
@@ -149,12 +162,13 @@ padding:20px 38px 20px 38px;
 
 
 .select-date{
-    height: 120px;
+    height: 180px;
     width: 25%;
       text-align: center;
       padding-top: 30px;
       border-radius: 2rem;
-      box-shadow: 0 20px 57px 0 rgba(51, 51, 51, 0.1);
+      background-color: white;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
       margin:auto;
 }
 .select-date label{
@@ -163,16 +177,27 @@ padding:20px 38px 20px 38px;
 #date-selected{
     font-size: 2rem;
 }
-.submit-date,.submit-location,.back-location{
+.submit-date,.back-location{
     position: relative;
     font-size: 2rem;
-    top:30px
+    top:30px;
+    background-color: teal;
+    color: white;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid teal;
+    cursor: pointer;
+}
     
+.form-buttons{
+    background-color: teal;
+    color: white;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid teal;
+    cursor: pointer;
 }
-.submit-date:hover{
 
-    background-color: rgb(205, 203, 203);
-}
 .hide{
     display: none;
 }
@@ -184,7 +209,8 @@ padding:20px 38px 20px 38px;
     text-align: center;
 }
 .form-buttons:hover{
-    background-color: rgb(143, 140, 140);;
+    background-color:  #33a1a1
+
 }
 .date-error{
     font-size: 1.5rem;
@@ -216,4 +242,8 @@ padding:20px 38px 20px 38px;
 }
 [data-color="3"]{
     background-color: green !important;
+}
+
+.hide {
+    display: none;
 }

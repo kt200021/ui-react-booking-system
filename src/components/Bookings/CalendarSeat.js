@@ -1,7 +1,9 @@
 import React from "react";
 const CalendarSeat = (props) => {
   const day = props.day;
+
   const bookings = JSON.parse(localStorage.getItem("bookings"));
+  //console.log(bookings);
   const currentMonth = props.currentMonth;
   const seatDisplay = (day) => {
     if (bookings !== null) {

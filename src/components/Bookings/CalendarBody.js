@@ -72,4 +72,4 @@ const CalendarBody = (props) => {
   );
 };
 
-export default CalendarBody;
+export default React.memo(CalendarBody);

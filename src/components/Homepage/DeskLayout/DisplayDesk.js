@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import Seat from "./Seat";
+
 const DisplayDesk = (props) => {
-  //console.log(props);
-  const { deskLayout, currentSelected, displayClass } = props;
-  ///console.log(deskLayout);
+  const prevSelected = useRef("empty");
+  const { deskLayout, displayClass } = props;
   const { A: rowA, B: rowB, C: rowC } = deskLayout;
-  //console.log(deskLayout);
+
+  //ask this
   const seatClick = (e) => {
     if (e.target.classList.contains("seat")) {
-      //console.log(e.target.innerText);
+      if (prevSelected.current !== "empty") {
+        console.log(prevSelected.current);
+        prevSelected.current.setAttribute("data-color", 2);
+      }
       props.changeSeat(e.target.innerText);
+      e.target.setAttribute("data-color", 3);
+      prevSelected.current = e.target;
     }
   };
+
   return (
     <div className={displayClass} onClick={seatClick}>
       <section className="row-A seats-row">
