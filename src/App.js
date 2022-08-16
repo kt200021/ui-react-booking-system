@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import Home from "./components/Homepage/HomePage";
 import DisplayCalendar from "./components/Bookings/DisplayCalendar";
 import bangaloreData from "./components/Homepage/DeskLayout/DeskData";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Link,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 function App() {
   useEffect(() => {
     // console.log("useeffect called");
@@ -13,15 +19,19 @@ function App() {
     if (localStorage.getItem("blrData") === null)
       localStorage.setItem("blrData", JSON.stringify(bangaloreData));
   }, []);
+
   return (
     <>
       <Router>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/bookings">
-          <DisplayCalendar />
-        </Route>
+        <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/bookings">
+            <DisplayCalendar />
+          </Route>
+          <Redirect from="/" to="/home" />
+        </Switch>
       </Router>
     </>
   );
