@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles.css";
 import logo from "./ui-react.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Nav = () => {
   return (
     <>
@@ -11,17 +11,14 @@ const Nav = () => {
         </div>
 
         <nav className="top-nav">
-          <Link to="/home" className="home">
+          <NavLink to="/home" className="home">
             Home
-          </Link>
-          <Link to="/bookings" className="bookings">
+          </NavLink>
+          <NavLink to="/bookings" className="bookings">
             My Bookings
-          </Link>
+          </NavLink>
         </nav>
       </header>
-      <section className="form-header">
-        <h1 className="form-header-text"> Book a new desk</h1>
-      </section>
     </>
   );
 };

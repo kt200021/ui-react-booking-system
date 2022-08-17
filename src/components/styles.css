@@ -13,7 +13,7 @@ body{
 
 .top-nav{
   
- 
+   
     
 }
 .top-nav a {
@@ -21,11 +21,16 @@ body{
      color: white;
     text-decoration: none;
     font-size: 2.5rem;
+    border-radius: 1rem;
 
 }
 .top-nav a:hover{
-    background-color: #33a1a1;
+    background-color: #1d7575;
+   
     
+}
+.active{
+    background-color: #33a1a1;
 }
 .home,.bookings{
     padding:18px 25px 18px 25px;

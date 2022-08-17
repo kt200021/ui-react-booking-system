@@ -2,25 +2,32 @@
 
 
 .calendar-section{
-    display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 2rem;
-  background-color:white;
-    margin: auto;
-    width: 80%;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 2rem;
+background-color:white;
+margin: auto;
+width: 60%;
+padding: 50px 0px;
+box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
 }
 
 .calendar{
-
+    color: white;
     margin:auto;
-   
+    background-color:  #5b5d5d!important;
+    /* border: 0.5rem solid #2ac2a4; */
+    border-radius: 2rem;
 }
-
+.calendar-display{
+    width: 60%;
+}
 .calendar td,th{
    text-align: center;
-
+    line-height: 2.5rem;
+/* border-radius: 1rem;
+    border: 0.5rem solid #f4aaaa; */
     align-items: center;
     width:80px;
     height: 70px;
@@ -29,9 +36,9 @@
 
 }
 .calendar-display{
-    background-color: #f6f6f6;
+   
     border-radius: 2rem;
-    border: solid;
+    
 }
 .seat-overlay{
     position: fixed;
@@ -60,6 +67,7 @@
 
    text-align: center;
    font-size: 2rem;
+   margin-top: 0;
 }
 .hide{
     display: none;
@@ -76,6 +84,15 @@ margin-right: 20px;
     padding: 0.75rem 1.5rem;
     border: 1px solid teal;
     cursor: pointer;
+}
+.next-button:disabled,
+.next-button[disabled],.prevButton:disabled,.prevButton[disabled]{
+    background-color: rgb(127, 148, 148);
+    color: white;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid teal;
+cursor: default;
 }
 .next-month{
 margin-left: 20px;
@@ -161,7 +178,7 @@ padding:20px 38px 20px 38px;
 .row-C{
     padding-bottom:50px;
 }
-/* .seat{
+.seat{
     width:10%;
     height:50px;
     margin:0px 10px 0px 10px;
@@ -171,8 +188,9 @@ padding:20px 38px 20px 38px;
     padding-top:16px;
     border-radius: 0.3rem;
     font-size: 2.2rem;
-} */
+}
 .calendar-seat{
+    color: black;
     background-color: white;
     border-radius: 8px;
     position: relative;

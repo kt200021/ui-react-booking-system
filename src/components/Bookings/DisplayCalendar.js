@@ -10,6 +10,22 @@ import CalendarBody from "./CalendarBody";
 import SeatOverlay from "./SeatOverlay";
 import SelectDesk from "../Homepage/SelectDesk/SelectDesk";
 import Nav from "../Homepage/Nav/Nav";
+
+const monthsList = [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN",
+  "JULY",
+  "AUG",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DEC",
+];
+
 function handleMonth(state, action) {
   if (action.type === "next") {
     if (state.currentMonth < 11)
@@ -100,7 +116,7 @@ const DisplayCalendar = () => {
   return (
     <>
       <Nav></Nav>
-      <h1 className="calendar-month"> {currentMonth.currentMonth}</h1>
+
       <section className="calendar-section">
         <section className="prev-month">
           <button
@@ -115,6 +131,10 @@ const DisplayCalendar = () => {
         </section>
 
         <section className="calendar-display" onClick={EditBooking}>
+          <h1 className="calendar-month">
+            {" "}
+            {monthsList[currentMonth.currentMonth - 1]}
+          </h1>
           <table className="calendar">
             <thead className="header">
               <tr>
@@ -124,7 +144,7 @@ const DisplayCalendar = () => {
                 <th>Wed</th>
                 <th>Thu</th>
                 <th>Fri</th>
-                <th>sat</th>
+                <th>Sat</th>
               </tr>
             </thead>
             <tbody className="calendar-body">

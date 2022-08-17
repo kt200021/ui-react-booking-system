@@ -29,6 +29,9 @@ const Home = () => {
   return (
     <>
       <Nav />
+      <section className="form-header">
+        <h1 className="form-header-text"> Book a new desk</h1>
+      </section>
       {index === 1 && <SelectLocation changeIndex={changeIndex} />}
       {index === 2 && (
         <SelectDate
