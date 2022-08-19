@@ -51,15 +51,15 @@ const SeatOverlay = (props) => {
       <section className="seat-overlay" onClick={handleWindowClick}>
         <section className="overlay-message" ref={overlayBox}>
           <p className="seat-no-overlay">
-            <text class="overlay-info">
+            <span className="overlay-info">
               {" "}
               <b> Date :</b> &nbsp;
               {currentDay + "/" + currentMonth}/2022
-            </text>
+            </span>
             <br />
-            <text class="overlay-info">
+            <span className="overlay-info">
               <b> Seat Selected :</b> &nbsp;{seat.row + seat.col}
-            </text>
+            </span>
           </p>
           <button
             className="cancel-seat form-buttons"
@@ -96,4 +96,4 @@ const SeatOverlay = (props) => {
     </>
   );
 };
-export default React.memo(SeatOverlay);
+export default SeatOverlay;

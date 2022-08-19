@@ -4,9 +4,10 @@ const ModifyBooking = (desk, color) => {
 
   //console.log(month, day);
 
-  //console.log(deskLayout[row]);
+  console.log(blrData[month][day]);
   blrData[month][day][row][col - 1] = color;
-  //console.log(blrData[month][day][row]);
+  console.log(blrData[month][day][row]);
+  console.log(blrData[month][day][row][col - 1]);
   localStorage.setItem("blrData", JSON.stringify(blrData));
   const d = JSON.parse(localStorage.getItem("blrData"));
 

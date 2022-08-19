@@ -5,7 +5,15 @@ import DeleteBooking from "../DeskApi's/DeleteBooking";
 import ModifyBooking from "../DeskApi's/ModifyBooking";
 import useChange from "../../hooks/changeState";
 const SelectDesk = (props) => {
-  const { month, day, overlay, changeDesk, changeIndex, currentSeat } = props;
+  const {
+    month,
+    day,
+    overlay,
+    changeDesk,
+    changeIndex,
+    currentSeat,
+    overlayObj,
+  } = props;
   console.log("select desk rendered");
   const [seat, changeSeat] = useChange("");
   console.log(seat);
@@ -38,6 +46,7 @@ const SelectDesk = (props) => {
     const deskString = seat;
     const deskRow = deskString[0];
     const lengthString = deskString.length;
+    console.log(deskString);
     const deskNumber = parseInt(deskString.slice(2, lengthString));
 
     console.log("cancelled booking:", cancelledBooking);
@@ -57,6 +66,7 @@ const SelectDesk = (props) => {
   const blrData = JSON.parse(localStorage.getItem("blrData"));
 
   const deskLayout = blrData[month][day];
+
   let classOverlay, deskOverlay;
   if (overlay) classOverlay = "select-desk-overlay";
   else classOverlay = "select-desk";
@@ -84,7 +94,7 @@ const SelectDesk = (props) => {
             onClick={
               overlay
                 ? () => {
-                    submitDeskOverlay(props.overlay);
+                    submitDeskOverlay(overlayObj);
                   }
                 : submitDesk
             }

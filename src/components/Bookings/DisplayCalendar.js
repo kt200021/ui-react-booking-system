@@ -50,27 +50,29 @@ const DisplayCalendar = () => {
 
   //ask about dom target
   const EditBooking = (e) => {
-    if (e.target === seatSelected.current) {
-      //console.log("heksknkk ");
-      changeOverlay();
-      return;
-    } else if (
+    // console.log("hellllooo");
+    //console.log(e.target.innerText);
+    if (
       e.target.classList.contains("calendar-seat") &&
-      e.target.innerText !== "--"
+      e.target.innerText !== "-"
     ) {
       const parent = e.target.parentElement;
-
-      const seatRow = parent.getAttribute("data-seat-row");
-      const seatCol = parent.getAttribute("data-seat-col");
-      console.log("i am in");
+      const deskString = e.target.innerText;
+      // console.log(deskString);
+      const deskRow = deskString[0];
+      const lengthString = deskString.length;
+      const deskNumber = parseInt(deskString.slice(1, lengthString));
+      // const seatRow = parent.getAttribute("data-seat-row");
+      //const seatCol = parent.getAttribute("data-seat-col");
+      //  console.log("i am in");
       setSeat(() => {
-        return { row: seatRow, col: seatCol };
+        return { row: deskRow, col: deskNumber };
       });
 
       setCurrentDay(() => {
         return parent.getAttribute("data-id");
       });
-      seatSelected.current = e.target;
+
       changeOverlay();
     }
   };
@@ -149,4 +151,4 @@ const DisplayCalendar = () => {
     </>
   );
 };
-export default React.memo(DisplayCalendar);
+export default DisplayCalendar;
