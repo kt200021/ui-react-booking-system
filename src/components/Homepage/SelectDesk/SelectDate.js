@@ -1,30 +1,41 @@
 import React, { useRef } from "react";
+import useChange from "../../hooks/changeState";
 
 const SelectDate = (props) => {
   const dateChosen = useRef();
-  const submitDate = () => {
-    //console.log(dateChosen.current.value);
-    const dateString = dateChosen.current.value;
-    let monthValue = dateString[5] + dateString[6];
-    monthValue = parseInt(monthValue);
-    let dateValue = dateString[8] + dateString[9];
-    dateValue = parseInt(dateValue);
+  const [dateError, , changeDateError] = useChange(false);
 
-    props.changeIndex(3);
-    props.changeMonth(monthValue);
-    props.changeDay(dateValue);
+  const submitDate = () => {
+    const dateString = dateChosen.current.value;
+    if (dateString) {
+      let monthValue = dateString[5] + dateString[6];
+      monthValue = parseInt(monthValue);
+      let dateValue = dateString[8] + dateString[9];
+      dateValue = parseInt(dateValue);
+
+      props.changeIndex(3);
+      props.changeMonth(monthValue);
+      props.changeDay(dateValue);
+    } else {
+      changeDateError();
+    }
   };
+
   const backDate = () => {
     props.changeIndex(1);
   };
   return (
     <section className="select-date">
-      <label>Select Date:</label>
+      <label className="select-date-header">Select Date :</label>
       <input type="date" id="date-selected" ref={dateChosen} />
       <br />
-      <div className="error">
-        <label className="date-error hidden">Date cannot be empty</label>
-      </div>
+      {dateError ? (
+        <div className="error">
+          <label className="date-error">Date cannot be empty</label>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="date-buttons">
         <button className="back-location form-buttons" onClick={backDate}>
           Back

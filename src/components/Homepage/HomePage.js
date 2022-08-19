@@ -1,30 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Nav from "./Nav/Nav.js";
 import SelectDate from "./SelectDesk/SelectDate.js";
 import SelectDesk from "./SelectDesk/SelectDesk.js";
 import SelectLocation from "./SelectDesk/SelectLocation.js";
-
+import useChange from "../hooks/changeState.js";
 import "../styles.css";
 const Home = () => {
-  const [index, setIndex] = useState(1);
-  const [month, setMonth] = useState();
-  const [day, setDay] = useState();
-
-  const changeIndex = (newIndex) => {
-    setIndex(() => {
-      return newIndex;
-    });
-  };
-  const changeMonth = (newMonth) => {
-    setMonth(() => {
-      return newMonth;
-    });
-  };
-  const changeDay = (newDay) => {
-    setDay(() => {
-      return newDay;
-    });
-  };
+  const [index, changeIndex] = useChange(1);
+  const [month, changeMonth] = useChange();
+  const [day, changeDay] = useChange();
 
   return (
     <>

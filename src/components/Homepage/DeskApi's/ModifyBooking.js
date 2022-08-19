@@ -10,7 +10,7 @@ const ModifyBooking = (desk, color) => {
   localStorage.setItem("blrData", JSON.stringify(blrData));
   const d = JSON.parse(localStorage.getItem("blrData"));
 
-  const d1 = d[month][day];
-  console.log(d, d1);
+  // const d1 = d[month][day];
+  //console.log(d, d1);
 };
 export default ModifyBooking;

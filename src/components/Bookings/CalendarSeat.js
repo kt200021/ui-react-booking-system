@@ -25,7 +25,7 @@ const CalendarSeat = (props) => {
     col = seat.col;
     seatNo = row + col;
   } else {
-    seatNo = "---";
+    seatNo = "-";
   }
   return (
     <td data-id={day} data-seat-row={row} data-seat-col={col}>

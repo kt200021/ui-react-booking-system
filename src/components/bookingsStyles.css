@@ -8,15 +8,17 @@ align-items: center;
 border-radius: 2rem;
 background-color:white;
 margin: auto;
-width: 60%;
+width: 80%;
+max-width: 800px;
 padding: 50px 0px;
 box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
 }
 
 .calendar{
+    padding-bottom: 20px;
     color: white;
     margin:auto;
-    background-color:  #5b5d5d!important;
+    background-color: #1c7c7c!important;
     /* border: 0.5rem solid #2ac2a4; */
     border-radius: 2rem;
 }
@@ -26,6 +28,7 @@ box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
 .calendar td,th{
    text-align: center;
     line-height: 2.5rem;
+    /* background-color:  #1d7575; */
 /* border-radius: 1rem;
     border: 0.5rem solid #f4aaaa; */
     align-items: center;
@@ -48,25 +51,30 @@ box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(16, 1, 1, 0.5);
-
+    background-color: rgba(0, 0, 0, 0.77);
+    text-align: center;
 }
 .overlay-message{
     background-color: rgb(244, 244, 244);
     display: inline-block;
+    margin: auto;
     position: relative;
     top:300px;
-    width: 20%;
-    left:40%;
+    height: 200px;
+    width: 40%;
+    max-width: 350px;
+  
+    
     box-shadow: 0 20px 57px 0 rgba(51, 51, 51, 0.1);
     border-radius: 2rem;
     padding-bottom: 20px;
-    padding-left: 20px;
+
 }
 .calendar-month{
 
    text-align: center;
-   font-size: 2rem;
+   font-size: 2.5rem;
+   color: #000000;
    margin-top: 0;
 }
 .hide{
@@ -104,20 +112,12 @@ margin-left: 20px;
 .seat-no-overlay{
 
     font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 40px;
     color:rgb(12, 10, 10)
 }
 
-.desk-overlay{
-    position: fixed;
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(16, 1, 1, 0.5);
 
-}
 
 .desk-layout{
 
@@ -143,10 +143,22 @@ margin-left: 20px;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(16, 1, 1, 0.5);
+    background-color: rgba(0, 0, 0, 0.77);
 
 }
+.select-desk-overlay{
 
+    position: relative;
+    top:15%;
+    border-radius: 2rem;
+    width: 84%;
+    max-width: 1000px;
+    margin:auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 20px 57px 0 rgba(51, 51, 51, 0.1);
+    background-color:rgb(255, 255, 255) ;
+}
 .desk-layout-overlay{
 
     
@@ -190,7 +202,9 @@ padding:20px 38px 20px 38px;
     font-size: 2.2rem;
 }
 .calendar-seat{
+    display: inline-block;
     color: black;
+    width: 25px;
     background-color: white;
     border-radius: 8px;
     position: relative;
@@ -198,7 +212,7 @@ padding:20px 38px 20px 38px;
     padding: 5px;
 }
 .calendar-seat:hover{
-    background-color: rgb(244, 252, 177) ;
+    background-color: rgb(72, 143, 113) ;
     cursor: pointer;
 }
 .hidden{
@@ -213,9 +227,8 @@ padding:20px 38px 20px 38px;
     font-size: 2rem;
     margin-right:10px ;
 }
-.desk-error{
-    font-size: 1.5rem;
-    color: red;
-    position: relative;
-    right: 30px;
+.overlay-info{
+    display: inline-block;
+    font-size: 2.5rem;
+    margin: 5px;
 }

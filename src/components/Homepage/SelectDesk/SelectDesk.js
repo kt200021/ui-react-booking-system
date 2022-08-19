@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import DisplayDesk from "../DeskLayout/DisplayDesk";
 import AddBooking from "../DeskApi's/AddBooking";
 import DeleteBooking from "../DeskApi's/DeleteBooking";
 import ModifyBooking from "../DeskApi's/ModifyBooking";
+import useChange from "../../hooks/changeState";
 const SelectDesk = (props) => {
-  const { month, day, overlay } = props;
-  const [seat, setSeat] = useState("");
-  const changeSeat = (newSeat) => {
-    setSeat(() => {
-      return newSeat;
-    });
-  };
+  const { month, day, overlay, changeDesk, changeIndex, currentSeat } = props;
+  console.log("select desk rendered");
+  const [seat, changeSeat] = useChange("");
+  console.log(seat);
+
+  const backEvent = overlay ? changeDesk : changeIndex;
   const submitDesk = (e) => {
     const deskString = seat;
     const deskRow = deskString[0];
@@ -26,6 +26,7 @@ const SelectDesk = (props) => {
 
     // console.log(seat);
     AddBooking(newBooking);
+    ModifyBooking(newBooking, 0);
     props.changeIndex(1);
   };
   const submitDeskOverlay = (cancelledBooking) => {
@@ -46,51 +47,51 @@ const SelectDesk = (props) => {
     ModifyBooking(cancelledBooking, 2);
     AddBooking(newBooking);
     ModifyBooking(newBooking, 0);
+    props.changeDesk();
   };
 
   const backDesk = () => {
-    props.changeIndex(2);
+    backEvent(2);
   };
 
   const blrData = JSON.parse(localStorage.getItem("blrData"));
 
-  console.log(month, day);
   const deskLayout = blrData[month][day];
-  console.log(deskLayout);
   let classOverlay, deskOverlay;
-  if (overlay) classOverlay = "desk-layout-overlay";
-  else classOverlay = "desk-layout";
+  if (overlay) classOverlay = "select-desk-overlay";
+  else classOverlay = "select-desk";
 
   if (overlay) deskOverlay = "desk-overlay";
   else deskOverlay = "";
+
   return (
     <section className={deskOverlay}>
-      <section className="select-desk">
+      <section className={classOverlay}>
         <h1 className="select-desk-header">Choose a desk</h1>
         <DisplayDesk
-          displayClass={classOverlay}
           deskLayout={deskLayout}
           changeSeat={changeSeat}
+          seat={seat}
+          currentSeat={currentSeat}
           currentSelected={3}
         />
         <div className="submit-buttons">
-          <div>
-            <label className="desk-error hidden">Invalid desk</label>
-          </div>
           <button className="back-seat form-buttons" onClick={backDesk}>
             Back
           </button>
-          <input
-            type="submit"
+          <button
             className="submit-desk form-buttons"
             onClick={
               overlay
                 ? () => {
-                    submitDeskOverlay(props.overlayObj);
+                    submitDeskOverlay(props.overlay);
                   }
                 : submitDesk
             }
-          />
+            disabled={seat === "" ? true : false}
+          >
+            Submit
+          </button>
         </div>
       </section>
     </section>

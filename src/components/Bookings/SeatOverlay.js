@@ -1,11 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import DeleteBooking from "../Homepage/DeskApi's/DeleteBooking";
 import ModifyBooking from "../Homepage/DeskApi's/ModifyBooking";
 
 const SeatOverlay = (props) => {
-  console.log(props);
+  //console.log(props);
   const { currentDay, currentMonth, seat } = props;
+  const overlayBox = useRef();
   console.log("seat overlay re rendered");
+
+  const handleWindowClick = (e) => {
+    if (
+      e.target !== overlayBox.current &&
+      !overlayBox.current.contains(e.target)
+    ) {
+      props.changeOverlay();
+    }
+  };
 
   const cancelSeat = (e) => {
     let cancelledBooking = {
@@ -18,6 +28,8 @@ const SeatOverlay = (props) => {
     console.log(cancelledBooking);
     DeleteBooking(currentMonth, currentDay);
     ModifyBooking(cancelledBooking, 2);
+    //console.log("ggegeh");
+
     props.changeOverlay();
   };
 
@@ -36,16 +48,21 @@ const SeatOverlay = (props) => {
 
   return (
     <>
-      <section className="seat-overlay" onClick={() => props.changeOverlay()}>
-        <section className="overlay-message">
-          <h1 className="seat-no-overlay">
-            Date: &nbsp;
-            {currentDay + "/" + currentMonth}/2022
+      <section className="seat-overlay" onClick={handleWindowClick}>
+        <section className="overlay-message" ref={overlayBox}>
+          <p className="seat-no-overlay">
+            <text class="overlay-info">
+              {" "}
+              <b> Date :</b> &nbsp;
+              {currentDay + "/" + currentMonth}/2022
+            </text>
             <br />
-            Seat selected: {seat.row + seat.col}
-          </h1>
+            <text class="overlay-info">
+              <b> Seat Selected :</b> &nbsp;{seat.row + seat.col}
+            </text>
+          </p>
           <button
-            className="cancel-seat"
+            className="cancel-seat form-buttons"
             data-row=""
             data-col=""
             onClick={cancelSeat}
@@ -53,7 +70,7 @@ const SeatOverlay = (props) => {
             Cancel Seat
           </button>
           <button
-            className="edit-seat"
+            className="edit-seat form-buttons"
             data-row=""
             data-col=""
             onClick={editSeat}

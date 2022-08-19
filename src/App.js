@@ -4,7 +4,6 @@ import DisplayCalendar from "./components/Bookings/DisplayCalendar";
 import bangaloreData from "./components/Homepage/DeskLayout/DeskData";
 import {
   BrowserRouter as Router,
-  Link,
   Redirect,
   Route,
   Switch,
