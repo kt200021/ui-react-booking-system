@@ -5,7 +5,7 @@ import SeatOverlay from "./SeatOverlay";
 import SelectDesk from "../Homepage/SelectDesk/SelectDesk";
 import Nav from "../Homepage/Nav/Nav";
 import useChange from "../hooks/changeState";
-
+import SuccessMessage from "../successMessage";
 const monthsList = [
   "JAN",
   "FEB",
@@ -43,6 +43,7 @@ const DisplayCalendar = () => {
   const [desk, , changeDesk] = useChange(false);
   const [overlayObj, changeOverlayObj] = useChange({});
   const [overlay, , changeOverlay] = useChange(false);
+  const [message, changeMessage] = useChange("");
   console.log("display calendar re rendered", overlay);
   const [currentMonth, dispatchMonth] = useReducer(handleMonth, {
     currentMonth: cmonth,
@@ -134,6 +135,7 @@ const DisplayCalendar = () => {
             changeOverlay={changeOverlay}
             changeDesk={changeDesk}
             changeOverlayObj={changeOverlayObj}
+            changeMessage={changeMessage}
           />
         )}
         {desk && (
@@ -145,8 +147,10 @@ const DisplayCalendar = () => {
             changeDesk={changeDesk}
             deskClass={"select-desk"}
             currentSeat={seat}
+            changeMessage={changeMessage}
           />
         )}
+        {message !== "" && <SuccessMessage message={message} />}
       </section>
     </>
   );

@@ -29,8 +29,11 @@ const SeatOverlay = (props) => {
     DeleteBooking(currentMonth, currentDay);
     ModifyBooking(cancelledBooking, 2);
     //console.log("ggegeh");
-
-    props.changeOverlay();
+    props.changeMessage("Seat cancelled !");
+    setTimeout(() => {
+      props.changeOverlay();
+      props.changeMessage("");
+    }, 1000);
   };
 
   const editSeat = () => {

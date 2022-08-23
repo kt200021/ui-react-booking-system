@@ -18,6 +18,8 @@ const SelectDesk = (props) => {
   const [seat, changeSeat] = useChange("");
   console.log(seat);
 
+  const successBooking = () => {};
+
   const backEvent = overlay ? changeDesk : changeIndex;
   const submitDesk = (e) => {
     const deskString = seat;
@@ -35,7 +37,10 @@ const SelectDesk = (props) => {
     // console.log(seat);
     AddBooking(newBooking);
     ModifyBooking(newBooking, 0);
-    props.changeIndex(1);
+    props.changeIndex(4);
+    setTimeout(() => {
+      props.changeIndex(1);
+    }, 1000);
   };
   const submitDeskOverlay = (cancelledBooking) => {
     //   console.log("Form details");
@@ -56,7 +61,11 @@ const SelectDesk = (props) => {
     ModifyBooking(cancelledBooking, 2);
     AddBooking(newBooking);
     ModifyBooking(newBooking, 0);
-    props.changeDesk();
+    props.changeMessage("Seat edited successfully !");
+    setTimeout(() => {
+      props.changeDesk();
+      props.changeMessage("");
+    }, 1000);
   };
 
   const backDesk = () => {
@@ -77,7 +86,25 @@ const SelectDesk = (props) => {
   return (
     <section className={deskOverlay}>
       <section className={classOverlay}>
-        <h1 className="select-desk-header">Choose a desk</h1>
+        <section className="select-desk-header">
+          <section className="header-message">
+            <h1 className="header-message-text">Choose a desk</h1>
+          </section>
+          <section className="seat-colors">
+            <span className="booked-seat seat-shape"></span>
+            <span className="booked-seat-text color-text">Already Booked </span>
+            <span className="unavailable-seat seat-shape"></span>
+            <span className="unavailable-seat-text color-text">
+              Unavailable Desk
+            </span>
+            <span className="new-seat seat-shape"></span>
+            <span className="new-seat-text color-text">New Desk</span>
+            {overlay ? <span className="current-seat seat-shape"></span> : null}
+            {overlay ? (
+              <span className="current-seat-text color-text">Current Desk</span>
+            ) : null}
+          </section>
+        </section>
         <DisplayDesk
           deskLayout={deskLayout}
           changeSeat={changeSeat}

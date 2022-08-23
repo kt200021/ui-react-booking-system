@@ -7,7 +7,7 @@ body{
    margin-top: 0;
    margin-left: 0;
    margin-right: 0;
-   background-color: #e8fbfb;
+   background-color: #f8f8ff;
 }
 
 
@@ -23,7 +23,7 @@ body{
     font-size: 2.5rem;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-style:Monaco;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 
 }
 .top-nav a:hover{
@@ -75,21 +75,26 @@ padding-top: 4px;
     border-radius: 2rem;
     width: 84%;
     max-width: 1000px;
+
     margin:auto;
-    padding-top: 20px;
+   padding-top: 3rem;
     padding-bottom: 20px;
     box-shadow: 0 20px 57px 0 rgba(51, 51, 51, 0.1);
     background-color:rgb(255, 255, 255) ;
 
 }
+.header-message-text{
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
 
-.select-desk-header{
+/* .select-desk-header{
    
     margin:20px auto 20px auto;
     text-align: center;
    width:40%;
    font-size: 2.5rem;
-}
+} */
 .seats-row{
 display: flex;
 padding:20px 38px 20px 38px;
@@ -123,7 +128,7 @@ padding:20px 38px 20px 38px;
 .form-header-text{
     font-size: 3rem;
    text-align: center;
-   margin-bottom: 100px;
+   margin-bottom: 80px;
    color:#008080;
    /* font-family: */
 }
@@ -278,4 +283,71 @@ padding:20px 38px 20px 38px;
 
     font-size: 2rem;
     margin: 5px;
+}
+
+.message-box{
+    position: relative;
+    top:300px;
+    height: 120px;
+    width: 35%;
+    max-width: 400px;
+      text-align: center;
+      padding-top: 30px;
+      border-radius: 2rem;
+      background-color: white;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+      margin:auto;
+      
+
+}
+.message-content{
+    line-height: 8rem;
+    font-size: 2.5rem;
+}
+.success-message-overlay{
+    position: fixed;
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.77);
+    text-align: center;
+}
+
+.booked-seat{
+    background-color: red;
+   
+}
+.unavailable-seat{
+    background-color: grey;
+}
+.new-seat{
+    background-color: green;
+}
+.current-seat{
+    background-color: rgb(237, 237, 2);
+}
+.select-desk-header{
+    text-align: center;
+    
+    margin-bottom: 10px;
+}
+.seat-colors{
+    margin-left: 0%   ;
+}
+.seat-shape{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 2rem;
+}
+.header-message{
+    font-size: 3.5rem;
+}
+.color-text{
+    margin-left:5px;
+    margin-right: 15px;
+    font-size: 1.7rem;
 }
