@@ -86,21 +86,32 @@ margin-right: 20px;
 
 }
 .next-button,.prevButton{
-    background-color: teal;
-    color: white;
-    border-radius: 4px;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid teal;
+    /* background-color: rgb(36, 180, 180); */
+    background-color: white;
+    color: black;
+    /* border-radius: 50%; */
+    /* padding: 0.2rem 0.1rem; */
+/* font-size: 2rem !important; */
+    
+   
+    border-radius: 50%;
+    border: none;
+    /* border: 1px solid teal; */
     cursor: pointer;
+}
+.next-button:hover,.prevButton:hover{
+color: #1c7c7c;
+   
 }
 .next-button:disabled,
 .next-button[disabled],.prevButton:disabled,.prevButton[disabled]{
-    background-color: rgb(127, 148, 148);
-    color: white;
-    border-radius: 4px;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid teal;
-cursor: default;
+    /* background-color: rgb(127, 148, 148); */
+    color: grey;
+  
+ 
+    /* border: 1px solid teal; */
+    border-radius: 50%;
+cursor:not-allowed;
 }
 .next-month{
 margin-left: 20px;
@@ -179,7 +190,7 @@ margin-left: 20px;
    width:40%;
    font-size: 2.5rem;
 } */
-.seats-row{
+/* .seats-row{
 display: flex;
 padding:20px 38px 20px 38px;
 
@@ -200,7 +211,7 @@ padding:20px 38px 20px 38px;
     padding-top:16px;
     border-radius: 0.3rem;
     font-size: 2.2rem;
-}
+} */
 .calendar-seat{
     display: inline-block;
     color: black;
@@ -212,7 +223,7 @@ padding:20px 38px 20px 38px;
     padding: 5px;
 }
 .calendar-seat:hover{
-    background-color: rgb(72, 143, 113) ;
+    background-color: rgb(221, 252, 83) ;
     cursor: pointer;
 }
 .hidden{
@@ -231,4 +242,132 @@ padding:20px 38px 20px 38px;
     display: inline-block;
     font-size: 2.5rem;
     margin: 5px;
+}
+
+@media(max-width:1000px)
+{
+
+.calendar-section{
+  width:80%;
+}
+.calendar-display{
+    width: 80%;
+}
+
+}
+@media(max-width:700px)
+{
+.logo img{
+    width:140px !important;
+    height: 40px !important;
+    padding-top: 3px;
+}
+.home,.bookings{
+    position: relative;
+    left: 25%;
+    padding: 13px 15px 13px 15px;
+    font-size: 2.5rem !important;
+}
+
+}
+@media(max-width:390px)
+{
+.logo img{
+    width:125px !important;
+    height: 35px !important;
+    padding-top: 3px;
+    padding-left: 0px;
+}
+.home,.bookings{
+    position: relative;
+    left: 23%;
+    padding: 13px 5px 13px 5px;
+    font-size: 1.8rem !important;
+}
+
+
+
+
+.calendar-section{
+   
+    border-radius: 1rem;
+    background-color:white;
+    margin: auto;
+    width: 80%;
+    max-width: 800px;
+    padding: 10px 0px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+    }
+    
+    .calendar{
+        padding-bottom: 20px;
+        color: white;
+        margin:auto;
+        margin-bottom: 10px;
+        background-color: #1c7c7c!important;
+        /* border: 0.5rem solid #2ac2a4; */
+        border-radius: 1rem;
+    }
+    .calendar-display{
+        width: 90%;
+    }
+    .calendar td,th{
+       text-align: center;
+        line-height: 3.8vw;
+        /* background-color:  #1d7575; */
+    /* border-radius: 1rem;
+        border: 0.5rem solid #f4aaaa; */
+        align-items: center;
+        width:80px;
+        height: 50px;
+        padding-top: 15px;
+        font-size: 4vw;
+    
+    }
+    .calendar-display{
+       
+        border-radius: 2rem;
+        
+    }
+    .calendar-month{
+
+        text-align: center;
+        font-size: 5vw;
+        color: #000000;
+        margin-top: 10px;
+     }
+   .header{
+    height: 40px !important;
+   }
+   .next-button,.prevButton{
+    /* background-color: rgb(36, 180, 180); */
+    background-color: #f8f8ff;
+    color: black;
+    /* border-radius: 50%; */
+    /* padding: 0.2rem 0.1rem; */
+/* font-size: 2rem !important; */
+    
+   font-size: 30px !important;
+    border-radius: 20%;
+    border: none;
+    /* border: 1px solid teal; */
+    cursor: pointer;
+}
+.overlay-message{
+    background-color: rgb(244, 244, 244);
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    top:300px;
+    height: 200px;
+    width: 80%;
+ 
+  
+    
+    box-shadow: 0 20px 57px 0 rgba(51, 51, 51, 0.1);
+    border-radius: 2rem;
+    padding-bottom: 20px;
+
+}
+
 }

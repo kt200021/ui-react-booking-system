@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DisplayDesk from "../DeskLayout/DisplayDesk";
 import AddBooking from "../DeskApi's/AddBooking";
 import DeleteBooking from "../DeskApi's/DeleteBooking";
@@ -14,11 +14,17 @@ const SelectDesk = (props) => {
     currentSeat,
     overlayObj,
   } = props;
+  const [deskLayout, changeDeskLayout] = useChange();
+  useEffect(() => {
+    const blrData = JSON.parse(localStorage.getItem("blrData"));
+    changeDeskLayout(blrData[month][day]);
+
+    console.log("useeffect called");
+  }, []);
+
   console.log("select desk rendered");
   const [seat, changeSeat] = useChange("");
   console.log(seat);
-
-  const successBooking = () => {};
 
   const backEvent = overlay ? changeDesk : changeIndex;
   const submitDesk = (e) => {
@@ -62,6 +68,7 @@ const SelectDesk = (props) => {
     AddBooking(newBooking);
     ModifyBooking(newBooking, 0);
     props.changeMessage("Seat edited successfully !");
+    props.changeBookingsUpdate();
     setTimeout(() => {
       props.changeDesk();
       props.changeMessage("");
@@ -71,10 +78,6 @@ const SelectDesk = (props) => {
   const backDesk = () => {
     backEvent(2);
   };
-
-  const blrData = JSON.parse(localStorage.getItem("blrData"));
-
-  const deskLayout = blrData[month][day];
 
   let classOverlay, deskOverlay;
   if (overlay) classOverlay = "select-desk-overlay";
@@ -98,20 +101,22 @@ const SelectDesk = (props) => {
               Unavailable Desk
             </span>
             <span className="new-seat seat-shape"></span>
-            <span className="new-seat-text color-text">New Desk</span>
+            <span className="new-seat-text color-text">Selected Desk</span>
             {overlay ? <span className="current-seat seat-shape"></span> : null}
             {overlay ? (
               <span className="current-seat-text color-text">Current Desk</span>
             ) : null}
           </section>
         </section>
-        <DisplayDesk
-          deskLayout={deskLayout}
-          changeSeat={changeSeat}
-          seat={seat}
-          currentSeat={currentSeat}
-          currentSelected={3}
-        />
+        {deskLayout ? (
+          <DisplayDesk
+            deskLayout={deskLayout}
+            changeSeat={changeSeat}
+            seat={seat}
+            currentSeat={currentSeat}
+            currentSelected={3}
+          />
+        ) : null}
         <div className="submit-buttons">
           <button className="back-seat form-buttons" onClick={backDesk}>
             Back

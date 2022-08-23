@@ -1,11 +1,18 @@
-import React, { useReducer, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+  Suspense,
+} from "react";
 import "../bookingsStyles.css";
 import CalendarBody from "./CalendarBody";
-import SeatOverlay from "./SeatOverlay";
+
 import SelectDesk from "../Homepage/SelectDesk/SelectDesk";
 import Nav from "../Homepage/Nav/Nav";
 import useChange from "../hooks/changeState";
-import SuccessMessage from "../successMessage";
+const SeatOverlay = React.lazy(() => import("./SeatOverlay"));
+const SuccessMessage = React.lazy(() => import("../successMessage"));
 const monthsList = [
   "JAN",
   "FEB",
@@ -44,15 +51,21 @@ const DisplayCalendar = () => {
   const [overlayObj, changeOverlayObj] = useChange({});
   const [overlay, , changeOverlay] = useChange(false);
   const [message, changeMessage] = useChange("");
+  const [bookings, changeBookings] = useChange();
+  const [bookingsUpdate, , changeBookingsUpdate] = useChange(false);
   console.log("display calendar re rendered", overlay);
   const [currentMonth, dispatchMonth] = useReducer(handleMonth, {
     currentMonth: cmonth,
   });
 
+  useEffect(() => {
+    console.log("display calendar useffect");
+    const bookings = JSON.parse(localStorage.getItem("bookings"));
+    changeBookings(bookings);
+  }, [bookingsUpdate]);
+
   //ask about dom target
   const EditBooking = (e) => {
-    // console.log("hellllooo");
-    //console.log(e.target.innerText);
     if (
       e.target.classList.contains("calendar-seat") &&
       e.target.innerText !== "-"
@@ -86,10 +99,10 @@ const DisplayCalendar = () => {
           <button
             className="prevButton"
             disabled={currentMonth.currentMonth === 1 ? true : false}
-            style={{ fontSize: "24px" }}
+            style={{ fontSize: "50px" }}
             onClick={() => dispatchMonth({ type: "prev" })}
           >
-            prev
+            &#8249;
             <i />
           </button>
         </section>
@@ -112,7 +125,12 @@ const DisplayCalendar = () => {
               </tr>
             </thead>
             <tbody className="calendar-body">
-              <CalendarBody currentMonth={currentMonth.currentMonth} />
+              {bookings ? (
+                <CalendarBody
+                  currentMonth={currentMonth.currentMonth}
+                  bookings={bookings}
+                />
+              ) : null}
             </tbody>
           </table>
         </section>
@@ -120,23 +138,26 @@ const DisplayCalendar = () => {
           <button
             className="next-button"
             disabled={currentMonth.currentMonth === 12 ? true : false}
-            style={{ fontSize: "24px" }}
             onClick={() => dispatchMonth({ type: "next" })}
+            style={{ fontSize: "50px" }}
           >
-            next
+            &#8250;
             <i />
           </button>
         </section>
         {overlay && (
-          <SeatOverlay
-            currentDay={currentDay}
-            currentMonth={currentMonth.currentMonth}
-            seat={seat}
-            changeOverlay={changeOverlay}
-            changeDesk={changeDesk}
-            changeOverlayObj={changeOverlayObj}
-            changeMessage={changeMessage}
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <SeatOverlay
+              currentDay={currentDay}
+              currentMonth={currentMonth.currentMonth}
+              seat={seat}
+              changeOverlay={changeOverlay}
+              changeDesk={changeDesk}
+              changeOverlayObj={changeOverlayObj}
+              changeMessage={changeMessage}
+              changeBookingsUpdate={changeBookingsUpdate}
+            />
+          </Suspense>
         )}
         {desk && (
           <SelectDesk
@@ -148,9 +169,14 @@ const DisplayCalendar = () => {
             deskClass={"select-desk"}
             currentSeat={seat}
             changeMessage={changeMessage}
+            changeBookingsUpdate={changeBookingsUpdate}
           />
         )}
-        {message !== "" && <SuccessMessage message={message} />}
+        {message !== "" && (
+          <Suspense>
+            <SuccessMessage message={message} />
+          </Suspense>
+        )}
       </section>
     </>
   );

@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useChange = (initialValue) => {
   const [index, setIndex] = useState(initialValue);
 
-  const changeIndex = (value) => {
+  const changeIndex = useCallback((value) => {
     setIndex(() => {
       return value;
     });
-  };
-  const toggleIndex = () => {
+  }, []);
+  const toggleIndex = useCallback(() => {
     setIndex((index) => {
       return !index;
     });
-  };
+  }, []);
   return [index, changeIndex, toggleIndex];
 };
 export default useChange;

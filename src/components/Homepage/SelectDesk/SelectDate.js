@@ -1,35 +1,27 @@
 import React, { useRef } from "react";
 import useChange from "../../hooks/changeState";
 
+const getCurrentDate = () => {
+  const minDate = new Date();
+  let month = minDate.getMonth() + 1;
+  if (month <= 9) {
+    month = "0" + month;
+  }
+  let day = minDate.getDate();
+  if (day <= 9) {
+    day = "0" + day;
+  }
+  const minDateString = minDate.getFullYear() + "-" + month + "-" + day;
+  return minDateString;
+};
 const SelectDate = (props) => {
   const dateChosen = useRef();
-  const [dateError, , changeDateError] = useChange(false);
+  const [dateError, changeDateError] = useChange("");
 
-  const dateCheck = (dateString, currentDate) => {
-    let monthValue1 = dateString[5] + dateString[6];
-    monthValue1 = parseInt(monthValue1);
-    let dateValue1 = dateString[8] + dateString[9];
-    dateValue1 = parseInt(dateValue1);
-    console.log(currentDate);
-    const monthValue2 = currentDate.getMonth() + 1;
-
-    const dateValue2 = currentDate.getDate();
-
-    console.log(monthValue1, monthValue2);
-    console.log(dateValue1, dateValue2);
-    if (monthValue1 > monthValue2) {
-      return true;
-    } else if (monthValue1 < monthValue2) return false;
-    else {
-      if (dateValue1 >= dateValue2) return true;
-      else return false;
-    }
-  };
   const submitDate = () => {
     const dateString = dateChosen.current.value;
-    let currentDate = new Date();
 
-    if (dateString && dateCheck(dateString, currentDate)) {
+    if (dateString) {
       let monthValue = dateString[5] + dateString[6];
       monthValue = parseInt(monthValue);
       let dateValue = dateString[8] + dateString[9];
@@ -39,7 +31,7 @@ const SelectDate = (props) => {
       props.changeMonth(monthValue);
       props.changeDay(dateValue);
     } else {
-      changeDateError();
+      changeDateError("Invalid Date");
     }
   };
 
@@ -49,15 +41,18 @@ const SelectDate = (props) => {
   return (
     <section className="select-date">
       <label className="select-date-header">Select Date :</label>
-      <input type="date" id="date-selected" ref={dateChosen} />
+      <input
+        type="date"
+        id="date-selected"
+        ref={dateChosen}
+        min={getCurrentDate()}
+      />
       <br />
-      {dateError ? (
-        <div className="error">
-          <label className="date-error">Date cannot be empty</label>
-        </div>
-      ) : (
-        ""
-      )}
+
+      <div className="error">
+        <label className="date-error">{dateError}</label>
+      </div>
+
       <div className="date-buttons">
         <button className="back-location form-buttons" onClick={backDate}>
           Back
