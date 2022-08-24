@@ -457,7 +457,8 @@ padding:20px 38px 20px 38px;
             justify-content: space-around;
         }
         .location-label{
-     
+            position: relative;
+            top:1px;
          margin-left: 6px;
             font-size: 1.9rem;
             
