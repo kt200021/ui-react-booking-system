@@ -145,7 +145,7 @@ const DisplayCalendar = () => {
           </button>
         </section>
         {overlay && (
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<div></div>}>
             <SeatOverlay
               currentDay={currentDay}
               currentMonth={currentMonth.currentMonth}

@@ -305,7 +305,7 @@ padding:20px 38px 20px 38px;
         border-radius: 1rem;
     }
     .calendar-display{
-        width: 90%;
+        width: 88%;
     }
     .calendar td,th{
        text-align: center;
@@ -359,7 +359,7 @@ padding:20px 38px 20px 38px;
     background-color: white;
     display: inline-block;
     height: 30px;
-    width: 12px;
+    width: 14px;
    font-size: 30px !important;
    
     padding: 0px;
