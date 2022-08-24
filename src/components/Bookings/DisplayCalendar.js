@@ -5,6 +5,7 @@ import React, {
   useState,
   Suspense,
 } from "react";
+import Loader from "../Homepage/SelectDesk/loader";
 import "../bookingsStyles.css";
 import CalendarBody from "./CalendarBody";
 
@@ -144,7 +145,7 @@ const DisplayCalendar = () => {
           </button>
         </section>
         {overlay && (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <SeatOverlay
               currentDay={currentDay}
               currentMonth={currentMonth.currentMonth}
@@ -171,7 +172,7 @@ const DisplayCalendar = () => {
           />
         )}
         {message !== "" && (
-          <Suspense>
+          <Suspense fallback={<Loader />}>
             <SuccessMessage message={message} />
           </Suspense>
         )}

@@ -1,5 +1,5 @@
 import React from "react";
-import seatDisplay from "../Homepage/DeskApi's/seatDisplay";
+
 import CalendarSeat from "./CalendarSeat";
 const CalendarBody = (props) => {
   const { bookings, currentMonth } = props;

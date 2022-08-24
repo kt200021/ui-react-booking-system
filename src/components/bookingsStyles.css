@@ -358,7 +358,7 @@ padding:20px 38px 20px 38px;
 
     background-color: white;
     display: inline-block;
-    height: 10px;
+    height: 30px;
     width: 10px;
    font-size: 30px !important;
    
@@ -366,11 +366,11 @@ padding:20px 38px 20px 38px;
  
 }.prev-month{
 
-    margin-right: 2px;
+    margin-right: 2px !important;
     
     }
 .next-month{
-    margin-left: 2px;
+    margin-left: 2px !important;
     }
 .next-button:hover,.prevButton:hover{
     color: #1c7c7c;
