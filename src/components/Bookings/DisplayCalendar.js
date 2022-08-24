@@ -172,7 +172,7 @@ const DisplayCalendar = () => {
           />
         )}
         {message !== "" && (
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<div></div>}>
             <SuccessMessage message={message} />
           </Suspense>
         )}
