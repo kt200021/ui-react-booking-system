@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import useChange from "../../hooks/changeState";
+import useChange from "../../hooks/useChange";
 import Loader from "./loader";
 const SelectLocation = (props) => {
   const submitLocation = () => {
     props.changeIndex(2);
   };
+
   const [locationList, changeLocationList] = useChange([]);
   const [pageNumber, changePageNumber] = useChange(1);
-  const [selectedLocation, changeSelectedLocation] = useChange("AbhayaPuri");
+  const [selectedLocation, changeSelectedLocation] = useChange("");
   const [scroll, , changeScroll] = useChange(false);
+
   useEffect(() => {
     const fetchLocation = async () => {
       const response = await fetch(
@@ -24,16 +26,14 @@ const SelectLocation = (props) => {
         }
       );
       const data = await response.json(); // Here you have the data that you need
-      //  console.log(data);
       const newLocations = data.results.map((element) => {
         return element.ascii_name;
       });
 
       changeLocationList([...locationList, ...newLocations]);
-      // console.log(locationList);
     };
     fetchLocation();
-  }, [pageNumber]);
+  }, [pageNumber, changeLocationList, locationList]);
   return (
     <>
       {locationList.length !== 0 ? (

@@ -1,19 +1,13 @@
-import React, {
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-  Suspense,
-} from "react";
-import Loader from "../Homepage/SelectDesk/loader";
+import React, { useEffect, useReducer, useState, Suspense } from "react";
 import "../bookingsStyles.css";
-import CalendarBody from "./CalendarBody";
+import CalendarBody from "./calendarBody";
 
-import SelectDesk from "../Homepage/SelectDesk/SelectDesk";
-import Nav from "../Homepage/Nav/Nav";
-import useChange from "../hooks/changeState";
-const SeatOverlay = React.lazy(() => import("./SeatOverlay"));
+import SelectDesk from "../Homepage/SelectDesk/selectDesk";
+import Nav from "../Homepage/Nav/nav";
+import useChange from "../hooks/useChange";
+const SeatOverlay = React.lazy(() => import("./seatOverlay"));
 const SuccessMessage = React.lazy(() => import("../successMessage"));
+
 const monthsList = [
   "JAN",
   "FEB",
@@ -43,16 +37,15 @@ const DisplayCalendar = () => {
   const cmonth = new Date().getMonth() + 1;
 
   const [seat, setSeat] = useState({ row: "", col: "" });
-
   const [currentDay, setCurrentDay] = useState();
-
   const [desk, , changeDesk] = useChange(false);
-  const [overlayObj, changeOverlayObj] = useChange({});
+  const [overlayBooking, changeOverlayBooking] = useChange({});
   const [overlay, , changeOverlay] = useChange(false);
   const [message, changeMessage] = useChange("");
   const [bookings, changeBookings] = useChange();
   const [bookingsUpdate, , changeBookingsUpdate] = useChange(false);
-  console.log("display calendar re rendered", overlay);
+
+  // console.log("display calendar re rendered", overlay);
   const [currentMonth, dispatchMonth] = useReducer(handleMonth, {
     currentMonth: cmonth,
   });
@@ -152,7 +145,7 @@ const DisplayCalendar = () => {
               seat={seat}
               changeOverlay={changeOverlay}
               changeDesk={changeDesk}
-              changeOverlayObj={changeOverlayObj}
+              changeOverlayBooking={changeOverlayBooking}
               changeMessage={changeMessage}
               changeBookingsUpdate={changeBookingsUpdate}
             />
@@ -163,7 +156,7 @@ const DisplayCalendar = () => {
             month={currentMonth.currentMonth}
             day={currentDay}
             overlay={true}
-            overlayObj={overlayObj}
+            overlayBooking={overlayBooking}
             changeDesk={changeDesk}
             deskClass={"select-desk"}
             currentSeat={seat}

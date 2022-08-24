@@ -1,8 +1,4 @@
-import React from "react";
-
-//console.log(bangalore);
 const AddBooking = (desk) => {
-  //console.log(bookings);
   const bookings = JSON.parse(localStorage.getItem("bookings"));
 
   const { row, col, month, day } = desk;

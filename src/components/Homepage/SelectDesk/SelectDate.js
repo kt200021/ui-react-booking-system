@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import useChange from "../../hooks/changeState";
+import useChange from "../../hooks/useChange";
 import SeatDisplay from "../DeskApi's/seatDisplay";
 const getCurrentDate = () => {
   const minDate = new Date();

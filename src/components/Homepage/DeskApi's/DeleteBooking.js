@@ -1,4 +1,3 @@
-import React from "react";
 const DeleteBooking = (currentMonth, currentDay) => {
   let bookings = localStorage.getItem("bookings");
   bookings = JSON.parse(bookings);

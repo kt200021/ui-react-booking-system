@@ -1,6 +1,6 @@
 import React from "react";
 
-import CalendarSeat from "./CalendarSeat";
+import CalendarSeat from "./calendarSeat";
 const CalendarBody = (props) => {
   const { bookings, currentMonth } = props;
   //   console.log(bookings);

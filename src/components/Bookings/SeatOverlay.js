@@ -1,12 +1,11 @@
-import React, { useEffect, useRef } from "react";
-import DeleteBooking from "../Homepage/DeskApi's/DeleteBooking";
-import ModifyBooking from "../Homepage/DeskApi's/ModifyBooking";
+import React, { useRef } from "react";
+import DeleteBooking from "../Homepage/DeskApi's/deleteBooking";
+import ModifyBooking from "../Homepage/DeskApi's/modifyBooking";
 
 const SeatOverlay = (props) => {
-  //console.log(props);
   const { currentDay, currentMonth, seat } = props;
   const overlayBox = useRef();
-  console.log("seat overlay re rendered");
+  //   console.log("seat overlay re rendered");
 
   const handleWindowClick = (e) => {
     if (
@@ -47,7 +46,7 @@ const SeatOverlay = (props) => {
       month: currentMonth,
       day: currentDay,
     };
-    props.changeOverlayObj(cancelledBooking);
+    props.changeOverlayBooking(cancelledBooking);
   };
 
   return (

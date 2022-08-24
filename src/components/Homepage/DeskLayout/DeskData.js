@@ -28,20 +28,6 @@ const deskList = DeskData();
 
 // }
 const YearData = (deskList) => {
-  //   const months = [
-  //     "JAN",
-  //     "FEB",
-  //     "MAR",
-  //     "APR",
-  //     "MAY",
-  //     "JUN",
-  //     "JULY",
-  //     "AUG",
-  //     "SEP",
-  //     "OCT",
-  //     "NOV",
-  //     "DEC",
-  //   ];
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const yearObj = {};

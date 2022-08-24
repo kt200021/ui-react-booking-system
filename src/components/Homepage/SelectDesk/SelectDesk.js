@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import DisplayDesk from "../DeskLayout/DisplayDesk";
-import AddBooking from "../DeskApi's/AddBooking";
-import DeleteBooking from "../DeskApi's/DeleteBooking";
-import ModifyBooking from "../DeskApi's/ModifyBooking";
-import useChange from "../../hooks/changeState";
+import DisplayDesk from "../DeskLayout/displayDesk";
+import AddBooking from "../DeskApi's/addBooking";
+import DeleteBooking from "../DeskApi's/deleteBooking";
+import ModifyBooking from "../DeskApi's/modifyBooking";
+import useChange from "../../hooks/useChange";
 const SelectDesk = (props) => {
   const {
     month,
@@ -12,26 +12,30 @@ const SelectDesk = (props) => {
     changeDesk,
     changeIndex,
     currentSeat,
-    overlayObj,
+    overlayBooking,
   } = props;
+
   const [deskLayout, changeDeskLayout] = useChange();
+
   useEffect(() => {
     const blrData = JSON.parse(localStorage.getItem("blrData"));
     changeDeskLayout(blrData[month][day]);
 
-    console.log("useeffect called");
-  }, []);
+    // console.log("useeffect called");
+  }, [changeDeskLayout, day, month]);
 
-  console.log("select desk rendered");
+  // console.log("select desk rendered");
   const [seat, changeSeat] = useChange("");
-  console.log(seat);
+  // console.log(seat);
 
   const backEvent = overlay ? changeDesk : changeIndex;
+
   const submitDesk = (e) => {
     const deskString = seat;
     const deskRow = deskString[0];
     const lengthString = deskString.length;
     const deskNumber = parseInt(deskString.slice(2, lengthString));
+
     let newBooking = {
       row: deskRow,
       col: deskNumber,
@@ -57,12 +61,14 @@ const SelectDesk = (props) => {
     const deskString = seat;
     const deskRow = deskString[0];
     const lengthString = deskString.length;
-    console.log(deskString);
+    // console.log(deskString);
     const deskNumber = parseInt(deskString.slice(2, lengthString));
 
     console.log("cancelled booking:", cancelledBooking);
     const newBooking = { ...cancelledBooking, row: deskRow, col: deskNumber };
+
     console.log(newBooking);
+
     DeleteBooking(month, day);
     ModifyBooking(cancelledBooking, 2);
     AddBooking(newBooking);
@@ -82,7 +88,6 @@ const SelectDesk = (props) => {
   let classOverlay, deskOverlay;
   if (overlay) classOverlay = "select-desk-overlay";
   else classOverlay = "select-desk";
-
   if (overlay) deskOverlay = "desk-overlay";
   else deskOverlay = "";
 
@@ -127,7 +132,7 @@ const SelectDesk = (props) => {
             onClick={
               overlay
                 ? () => {
-                    submitDeskOverlay(overlayObj);
+                    submitDeskOverlay(overlayBooking);
                   }
                 : submitDesk
             }

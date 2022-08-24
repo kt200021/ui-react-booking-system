@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Home from "./components/Homepage/HomePage";
-import DisplayCalendar from "./components/Bookings/DisplayCalendar";
-import bangaloreData from "./components/Homepage/DeskLayout/DeskData";
+import Home from "./components/Homepage/homePage";
+import DisplayCalendar from "./components/Bookings/displayCalendar";
+import bangaloreData from "./components/Homepage/DeskLayout/deskData";
 import {
   BrowserRouter as Router,
   Redirect,
