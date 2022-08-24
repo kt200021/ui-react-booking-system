@@ -289,7 +289,7 @@ padding:20px 38px 20px 38px;
     border-radius: 1rem;
     background-color:white;
     margin: auto;
-    width: 92%;
+    width: 94%;
     max-width: 800px;
     padding: 10px 0px;
     box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
@@ -358,7 +358,7 @@ padding:20px 38px 20px 38px;
 
     background-color: white;
     display: inline-block;
-    height: 0px;
+    height: 10px;
     width: 10px;
    font-size: 30px !important;
    
