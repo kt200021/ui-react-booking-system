@@ -31,8 +31,8 @@ const SeatOverlay = (props) => {
     //console.log("ggegeh");
     props.changeMessage("Seat cancelled !");
     props.changeBookingsUpdate();
+    props.changeOverlay();
     setTimeout(() => {
-      props.changeOverlay();
       props.changeMessage("");
     }, 1000);
   };

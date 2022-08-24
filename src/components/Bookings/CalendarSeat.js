@@ -1,9 +1,10 @@
 import React from "react";
+import seatDisplay from "../Homepage/DeskApi's/seatDisplay";
 const CalendarSeat = (props) => {
-  const { day, seatDisplay } = props;
+  const { day, bookings, currentMonth } = props;
   //console.log(bookings);
   ///console.log(seatDisplay);
-  const seat = seatDisplay(day);
+  const seat = seatDisplay(day, bookings, currentMonth);
 
   let row, col, seatNo;
   if (seat) {

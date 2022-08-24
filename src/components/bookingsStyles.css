@@ -89,14 +89,10 @@ margin-right: 20px;
     /* background-color: rgb(36, 180, 180); */
     background-color: white;
     color: black;
-    /* border-radius: 50%; */
-    /* padding: 0.2rem 0.1rem; */
-/* font-size: 2rem !important; */
-    
-   
+
     border-radius: 50%;
     border: none;
-    /* border: 1px solid teal; */
+
     cursor: pointer;
 }
 .next-button:hover,.prevButton:hover{
@@ -270,7 +266,7 @@ padding:20px 38px 20px 38px;
 }
 
 }
-@media(max-width:390px)
+@media(max-width:700px)
 {
 .logo img{
     width:125px !important;
@@ -293,7 +289,7 @@ padding:20px 38px 20px 38px;
     border-radius: 1rem;
     background-color:white;
     margin: auto;
-    width: 80%;
+    width: 90%;
     max-width: 800px;
     padding: 10px 0px;
     box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
@@ -309,21 +305,30 @@ padding:20px 38px 20px 38px;
         border-radius: 1rem;
     }
     .calendar-display{
-        width: 90%;
+        width: 92%;
     }
     .calendar td,th{
        text-align: center;
         line-height: 3.8vw;
-        /* background-color:  #1d7575; */
-    /* border-radius: 1rem;
-        border: 0.5rem solid #f4aaaa; */
+  
         align-items: center;
         width:80px;
         height: 50px;
-        padding-top: 15px;
+        padding-top: 10px;
         font-size: 4vw;
     
     }
+    .header td,th{
+        text-align: center;
+         line-height: 2.8vw;
+   
+         align-items: center;
+         width:80px;
+         height: 30px;
+         padding-top: 5px;
+         font-size: 4vw;
+     
+     }
     .calendar-display{
        
         border-radius: 2rem;
@@ -336,31 +341,53 @@ padding:20px 38px 20px 38px;
         color: #000000;
         margin-top: 10px;
      }
+     .calendar-seat{
+        display: inline-block;
+        color: black;
+        width: 4vw;
+        background-color: white;
+        border-radius: 6px;
+        position: relative;
+        top:5px;
+        padding: 5px;
+    }
    .header{
     height: 40px !important;
    }
    .next-button,.prevButton{
-    /* background-color: rgb(36, 180, 180); */
-    background-color: #f8f8ff;
-    color: black;
-    /* border-radius: 50%; */
-    /* padding: 0.2rem 0.1rem; */
-/* font-size: 2rem !important; */
-    
+
+    background-color: white;
    font-size: 30px !important;
     border-radius: 20%;
-    border: none;
-    /* border: 1px solid teal; */
-    cursor: pointer;
-}
+ 
+}.prev-month{
+
+    margin-right: 2px;
+    
+    }
+.next-month{
+    margin-left: 2px;
+    }
+.next-button:hover,.prevButton:hover{
+    color: #1c7c7c;
+       
+    }
+    .next-button:disabled,
+    .next-button[disabled],.prevButton:disabled,.prevButton[disabled]{
+  
+        color: grey;
+ 
+        border-radius: 50%;
+    cursor:not-allowed;
+    }
 .overlay-message{
     background-color: rgb(244, 244, 244);
     display: inline-block;
     margin: auto;
     position: relative;
-    top:300px;
-    height: 200px;
-    width: 80%;
+    top:200px;
+    height: 150px;
+    width: 70%;
  
   
     
@@ -369,5 +396,96 @@ padding:20px 38px 20px 38px;
     padding-bottom: 20px;
 
 }
+
+.form-buttons{
+    background-color: teal;
+    color: white;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid teal;
+    cursor: pointer;
+}
+.form-buttons{
+    font-size: 1.5rem;
+    margin-right:5px ;
+}
+
+.seat-no-overlay{
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color:rgb(12, 10, 10)
+}
+.overlay-info{
+    display: inline-block;
+    font-size: 2rem;
+    margin: 5px;
+}
+
+}
+
+@media (max-width:375px)
+{
+
+
+.form-buttons{
+    background-color: teal;
+    color: white;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    border: 1px solid teal;
+    cursor: pointer;
+}
+.form-buttons{
+    font-size: 1.5rem;
+    margin-right:5px ;
+}
+
+    .logo img{
+        width:110px !important;
+        height: 32px !important;
+        padding-top: 0.2px;
+        padding-left: 0px;
+    }
+    .home,.bookings{
+        position: relative;
+        left: 26%;
+        padding: 11px 3px 11px 3px;
+        font-size: 1.6rem !important;
+    }
+    .form-buttons {
+        font-size: 1.5rem;
+        padding: 0.8rem 1.2rem;
+        margin-right: 5px;
+    }
+    .form-buttons:disabled,.form-buttons[disabled]{
+        background-color: rgb(127, 148, 148);
+        color: white;
+        border-radius: 4px;
+        padding: 0.8rem 1.2rem;
+        
+        pointer-events: none;
+      
+    }
+
+
+
+}
+@media (max-width:325px)
+{
+    .logo img{
+        width:100px !important;
+        height: 29px !important;
+        padding-top: 0.2px;
+        padding-left: 0px;
+    }
+    .home,.bookings{
+        position: relative;
+        left: 28%;
+        padding: 11px 3px 11px 3px;
+        font-size: 1.2rem !important;
+    }
+    
+
 
 }

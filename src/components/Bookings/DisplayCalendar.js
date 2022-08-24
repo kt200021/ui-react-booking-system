@@ -45,8 +45,6 @@ const DisplayCalendar = () => {
 
   const [currentDay, setCurrentDay] = useState();
 
-  const seatSelected = useRef();
-
   const [desk, , changeDesk] = useChange(false);
   const [overlayObj, changeOverlayObj] = useChange({});
   const [overlay, , changeOverlay] = useChange(false);

@@ -69,8 +69,8 @@ const SelectDesk = (props) => {
     ModifyBooking(newBooking, 0);
     props.changeMessage("Seat edited successfully !");
     props.changeBookingsUpdate();
+    props.changeDesk();
     setTimeout(() => {
-      props.changeDesk();
       props.changeMessage("");
     }, 1000);
   };
@@ -102,6 +102,7 @@ const SelectDesk = (props) => {
             </span>
             <span className="new-seat seat-shape"></span>
             <span className="new-seat-text color-text">Selected Desk</span>
+            <br />
             {overlay ? <span className="current-seat seat-shape"></span> : null}
             {overlay ? (
               <span className="current-seat-text color-text">Current Desk</span>

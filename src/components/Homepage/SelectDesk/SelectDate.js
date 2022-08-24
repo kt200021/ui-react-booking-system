@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import useChange from "../../hooks/changeState";
-
+import SeatDisplay from "../DeskApi's/seatDisplay";
 const getCurrentDate = () => {
   const minDate = new Date();
   let month = minDate.getMonth() + 1;
@@ -14,6 +14,7 @@ const getCurrentDate = () => {
   const minDateString = minDate.getFullYear() + "-" + month + "-" + day;
   return minDateString;
 };
+
 const SelectDate = (props) => {
   const dateChosen = useRef();
   const [dateError, changeDateError] = useChange("");
@@ -26,10 +27,15 @@ const SelectDate = (props) => {
       monthValue = parseInt(monthValue);
       let dateValue = dateString[8] + dateString[9];
       dateValue = parseInt(dateValue);
+      const bookings = JSON.parse(localStorage.getItem("bookings"));
 
-      props.changeIndex(3);
-      props.changeMonth(monthValue);
-      props.changeDay(dateValue);
+      if (SeatDisplay(dateValue, bookings, monthValue)) {
+        changeDateError("Desk already booked");
+      } else {
+        props.changeIndex(3);
+        props.changeMonth(monthValue);
+        props.changeDay(dateValue);
+      }
     } else {
       changeDateError("Invalid Date");
     }

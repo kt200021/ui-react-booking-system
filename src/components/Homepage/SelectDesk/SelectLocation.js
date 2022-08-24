@@ -38,60 +38,58 @@ const SelectLocation = (props) => {
     <>
       {locationList.length !== 0 ? (
         <section className="select-location">
-          <label className="location-label">Select Location : </label>
-          <section className="scrollBar">
-            <select
-              id="location"
-              style={{ width: "140px" }}
-              value={selectedLocation}
-              onChange={(e) => {
-                if (scroll) changeSelectedLocation(e.target.value);
-              }}
-              onClick={(e) => {
-                console.log("clicked");
-                if (!scroll) {
-                  console.log("i am ib");
-                  e.target.size = "6";
-                  changeScroll();
-                } else {
-                  e.target.parentNode.size = "1";
+          <section className="scrollbar-section">
+            <label className="location-label">Select Location : </label>
+            <section className="scrollBar">
+              <select
+                id="location"
+                style={{ width: "140px" }}
+                value={selectedLocation}
+                onChange={(e) => {
+                  if (scroll) changeSelectedLocation(e.target.value);
+                }}
+                onClick={(e) => {
+                  console.log("clicked");
+                  if (!scroll) {
+                    console.log("i am ib");
+                    e.target.size = "6";
+                    changeScroll();
+                  } else {
+                    e.target.parentNode.size = "1";
 
-                  console.log("hello");
-                  changeScroll();
-                }
-              }}
-              onScroll={(e) => {
-                //console.log(e.target.scrollTop);
-                // const yPosition = e.target.scrollTop;
-                const relativeYPosition =
-                  e.target.scrollTop - 300 * (pageNumber - 1);
-                if (relativeYPosition > 150) {
-                  changePageNumber(pageNumber + 1);
-                }
-              }}
-
-              // onFocus={(e) => (e.target.style.backgroundColor = "yellow")}
-            >
-              {scroll ? (
-                locationList.map((location, index) => {
-                  return (
-                    <option
-                      key={index}
-                      value={location}
-                      className="option-location"
-                    >
-                      {location}
-                    </option>
-                  );
-                })
-              ) : (
-                <option value={selectedLocation} className="option-location">
-                  {selectedLocation}
-                </option>
-              )}
-            </select>
+                    console.log("hello");
+                    changeScroll();
+                  }
+                }}
+                onScroll={(e) => {
+                  const relativeYPosition =
+                    e.target.scrollTop - 300 * (pageNumber - 1);
+                  if (relativeYPosition > 150) {
+                    changePageNumber(pageNumber + 1);
+                  }
+                }}
+              >
+                {scroll ? (
+                  locationList.map((location, index) => {
+                    return (
+                      <option
+                        key={index}
+                        value={location}
+                        className="option-location"
+                      >
+                        {location}
+                      </option>
+                    );
+                  })
+                ) : (
+                  <option value={selectedLocation} className="option-location">
+                    {selectedLocation}
+                  </option>
+                )}
+              </select>
+            </section>
+            <br />
           </section>
-          <br />
           <button
             className="submit-location form-buttons"
             onClick={submitLocation}
