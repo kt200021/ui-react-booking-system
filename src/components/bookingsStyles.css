@@ -251,21 +251,7 @@ padding:20px 38px 20px 38px;
 }
 
 }
-@media(max-width:700px)
-{
-.logo img{
-    width:140px !important;
-    height: 40px !important;
-    padding-top: 3px;
-}
-.home,.bookings{
-    position: relative;
-    left: 25%;
-    padding: 13px 15px 13px 15px;
-    font-size: 2.5rem !important;
-}
 
-}
 @media(max-width:700px)
 {
 .logo img{
@@ -276,9 +262,12 @@ padding:20px 38px 20px 38px;
 }
 .home,.bookings{
     position: relative;
-    left: 23%;
-    padding: 13px 5px 13px 5px;
+    left: 25%;
+    padding: 13px 7px 13px 7px;
     font-size: 1.8rem !important;
+}
+.home{
+    padding-right: 12px;
 }
 
 
@@ -453,9 +442,12 @@ padding:20px 38px 20px 38px;
     }
     .home,.bookings{
         position: relative;
-        left: 26%;
-        padding: 11px 3px 11px 3px;
+        left: 22%;
+        padding: 11px 10px 11px 3px;
         font-size: 1.6rem !important;
+    }
+    .home{
+        padding-right: 10px;
     }
     .form-buttons {
         font-size: 1.5rem;
