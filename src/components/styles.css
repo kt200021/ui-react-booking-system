@@ -117,7 +117,7 @@ padding:20px 38px 20px 38px;
 }
 
 .seat:hover{
-    background-color: green !important;
+    background-color: green ;
 }
 
 
@@ -308,6 +308,9 @@ padding:20px 38px 20px 38px;
 }
 [data-color="2"]{
     background-color: white !important;
+}
+[data-color="2"]:hover{
+    background-color: green!important;
 }
 [data-color="3"]{
     background-color: green !important;
@@ -532,10 +535,7 @@ padding:20px 38px 20px 38px;
        justify-content: center;
         
         }
-        .seat:hover{
-            background-color: rgb(112, 239, 110);
-            cursor: pointer;
-        }
+      
         .select-desk{
             border-radius: 2rem;
             width: 84%;
@@ -592,10 +592,7 @@ padding:20px 38px 20px 38px;
             font-size: 2.2rem;
         }
         
-        .seat:hover{
-            background-color: green !important;
-        }
-        
+      
         
         .seat-colors{
             margin-left: 0%   ;
