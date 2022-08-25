@@ -218,10 +218,12 @@ padding:20px 38px 20px 38px;
     top:5px;
     padding: 5px;
 }
-.calendar-seat:hover{
-    background-color: rgb(221, 252, 83) ;
+
+[data-desk-present="1"]:hover{
+    background-color: yellow !important;
     cursor: pointer;
 }
+
 .hidden{
     visibility: hidden;
 }

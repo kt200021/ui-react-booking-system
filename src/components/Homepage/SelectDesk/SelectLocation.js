@@ -32,8 +32,9 @@ const SelectLocation = (props) => {
 
       changeLocationList([...locationList, ...newLocations]);
     };
+
     fetchLocation();
-  }, [pageNumber, changeLocationList, locationList]);
+  }, [pageNumber, changeLocationList, changeSelectedLocation]);
   return (
     <>
       {locationList.length !== 0 ? (
@@ -49,22 +50,23 @@ const SelectLocation = (props) => {
                   if (scroll) changeSelectedLocation(e.target.value);
                 }}
                 onClick={(e) => {
-                  console.log("clicked");
+                  // console.log("clicked");
                   if (!scroll) {
-                    console.log("i am ib");
-                    e.target.size = "6";
+                    // console.log("i am ib");
+                    e.target.size = "3";
                     changeScroll();
                   } else {
                     e.target.parentNode.size = "1";
 
-                    console.log("hello");
+                    // console.log("hello");
                     changeScroll();
                   }
                 }}
                 onScroll={(e) => {
+                  console.log(e.target.scrollTop);
                   const relativeYPosition =
-                    e.target.scrollTop - 300 * (pageNumber - 1);
-                  if (relativeYPosition > 150) {
+                    e.target.scrollTop - 400 * (pageNumber - 1);
+                  if (relativeYPosition > 200) {
                     changePageNumber(pageNumber + 1);
                   }
                 }}
@@ -82,8 +84,8 @@ const SelectLocation = (props) => {
                     );
                   })
                 ) : (
-                  <option value={selectedLocation} className="option-location">
-                    {selectedLocation}
+                  <option value={locationList[0]} className="option-location">
+                    {locationList[0]}
                   </option>
                 )}
               </select>

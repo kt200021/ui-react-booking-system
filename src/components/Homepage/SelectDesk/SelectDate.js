@@ -37,7 +37,7 @@ const SelectDate = (props) => {
         props.changeDay(dateValue);
       }
     } else {
-      changeDateError("Invalid Date");
+      changeDateError("Date field cannot be empty");
     }
   };
 
